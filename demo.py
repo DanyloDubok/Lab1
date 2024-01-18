@@ -1,26 +1,43 @@
-#!/usr/bin/env python3
 
-# Плентимо бібліотеку/модуль sys для роботи з системними функціями
-import sys
+def get_user_name():
+    """
+    Отримує ім'я користувача або залишає значення 'User', якщо аргумент не вказано.
+    """
+    if len(sys.argv) > 1:
+        return sys.argv[1]
+    return 'User'
 
-# Визначаємо набір слів
-words = 'hello', 'python', 'world'
+def print_greeting(user):
+    """
+    Друкує привітання для користувача з використанням переданого імені.
+    """
+    msg = f'Hello, {user}!'
+    print(msg)
 
-# Виводимо слова у термінал
-print(' '.join(words))
 
-# Створюємо змінну user зі значенням 'User'
-user = 'User'
+def get_user_info():
+    """
+    Отримує вік та ім'я користувача.
+    """
+    name = input("Введіть ваше ім'я: ")
+    age = int(input("Введіть ваш вік: "))
+    return name, age
 
-# Перевіряємо, чи було передано аргументи командного рядка
-if len(sys.argv) > 1:
-    # Якщо так, змінюємо значення змінної user на переданий аргумент
-    user = sys.argv[1]
+def print_greeting_with_age(name, age):
+    """
+    Друкує привітання з іменем та віком користувача.
+    """
+    print(f"Привіт, {name}! Тобі вже {age} років.")
+    if age >= 18:
+        print("Треба вже чимось корисним зайнятись!")
 
-# Формуємо привітання з ім'ям, яке нам надав користувач
-msg = f'Hello, {user}!'
+if __name__ == "__main__":
+    import sys
 
-# Друкуємо сформований рядок
-print(msg)
+    #words = ('hello', 'python', 'world')
+    #print(' '.join(words))
+    #user_name = get_user_name()
+    #print_greeting(user_name)
+    user_name, user_age = get_user_info()
+    print_greeting_with_age(user_name, user_age)
 
-# Lab1
